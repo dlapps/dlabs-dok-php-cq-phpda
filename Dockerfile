@@ -1,6 +1,8 @@
 FROM dreamlabs/php-composer:latest
 
-RUN composer global require mamuz/php-dependency-analysis && \
+RUN apt-get update && \
+    apt-get install -y graphviz && \
+    composer global require mamuz/php-dependency-analysis && \
     ln -s /root/.composer/vendor/bin/phpda /usr/bin/phpda;
 
 ENTRYPOINT ["phpda"]
